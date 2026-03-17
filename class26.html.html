@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aga Khan University Hospital - AI Healthcare Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0d5bb9;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 115, 232, 0.8), rgba(52, 168, 83, 0.8)), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* AI Features */
+        .ai-features {
+            background-color: #f0f7ff;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .member-role {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery */
+        .gallery {
+            background-color: #f0f7ff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-hospital-alt"></i>
+                    <h1>Aga Khan University Hospital,Karachi
+ </h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#ai">AI Solutions</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="cta-button">Book Appointment</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Smart Care, Healthy Future</h2>
+            <p>Aga khan Hospital combines medical expertise with cutting-edge AI technology to deliver personalized, efficient, and compassionate healthcare.</p>
+            <button class="cta-button">Explore Our AI Solutions</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Medical Services</h2>
+                <p>Comprehensive healthcare powered by advanced technology and expert medical professionals.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');"></div>
+                    <div class="card-content">
+                        <h3>AI Diagnostics</h3>
+                        <p>Advanced AI algorithms analyze medical images and test results with exceptional accuracy for early disease detection.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div><img src="p309.png" width="560" height="205" ></div>
+                    <div class="card-content">
+                        <h3>Robotic Surgery</h3>
+                        <p>Minimally invasive procedures performed with precision robotics for faster recovery and better outcomes.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="card-content">
+                        <h3>Personalized Medicine</h3>
+                        <p>Treatment plans tailored to your genetic profile and health data for maximum effectiveness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Features Section -->
+    <section class="ai-features" id="ai">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Healthcare Solutions</h2>
+                <p>How artificial intelligence is transforming patient care at City Hospital</p>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>AI-Powered Medical Imaging</h3>
+                        <p>Our AI systems analyze X-rays, CT scans, and MRIs with 99.2% accuracy, helping radiologists detect anomalies faster and more reliably.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Predictive Health Monitoring</h3>
+                        <p>Continuous analysis of patient data from wearables and hospital monitors to predict and prevent adverse health events before they occur.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Smart Treatment Plans</h3>
+                        <p>AI algorithms create personalized treatment protocols based on patient history, genetics, and real-time health data.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Intelligent Hospital Management</h3>
+                        <p>AI optimizes appointment scheduling, resource allocation, and patient flow to reduce wait times and improve experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
+                <p>Transforming healthcare through technology and innovation</p>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">40%</div>
+                    <p>Faster Diagnosis with AI</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <p>Patient Satisfaction Rate</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <p>AI Systems Implemented</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <p>Virtual Health Assistant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hospital Gallery</h2>
+                <p>Explore our state-of-the-art facilities and technology</p>
+            </div>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80');"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Medical Experts</h2>
+                <p>Meet the specialists driving innovation in healthcare</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div><img src="p53.png" width="265" height="249"></div>
+                    <div class="member-info">
+                        <h3> Dr. Shahid Ahmed Sami</h3>
+                        <div class="member-role"></div>
+                        <p>Dr. Shahid Ahmed Sami - Pakistan ke leading cardiologist, 25+ years experience ke saath complex heart procedures ke expert. Aga Khan Hospital mein senior consultant aur heart diseases ke top specialist.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div ><img src="p52.png" width="265" height="249"></div>
+                    <div class="member-info">
+                        <h3> Dr. Saeed Hamid</h3>
+</h3>
+                        <div class="member-role"></div>
+                        <p>Dr. Saeed Hamid - Aga Khan Hospital ke top gastroenterologist, 30+ years experience ke saath liver diseases ke international expert. Medical college ke former dean aur research mein pioneer.
+
+</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div> <img src="p54.png" width="265" height="249"></div>
+                    <div class="member-info">
+                        <h3>Dr. Rashid Jooma</h3>
+                        <div class="member-role"></div>
+                        <p>Dr. Rashid Jooma - Aga Khan Hospital ke leading neurosurgeon, 25+ years experience ke saath complex brain surgeries ke specialist. Neurosurgery department ke head aur brain tumor operations ke expert.
+
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch to learn more about our AI healthcare solutions</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Visit Us</h3>
+                            <p>Stadium Road (National Stadium Road), Karachi, Sindh, Pakistan.</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+92 21 111‑911‑911</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>info@cityhospital.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Open Hours</h3>
+                            <p>24/7 Emergency & AI Consultation Services</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Enter subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Aga khan Hospital</h3>
+                    <p>Leading the future of healthcare with AI-powered solutions and compassionate care.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#ai">AI Solutions</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>AI Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Diagnostics</a></li>
+                        <li><a href="#">Predictive Analytics</a></li>
+                        <li><a href="#">Robotic Surgery</a></li>
+                        <li><a href="#">Virtual Assistant</a></li>
+                        <li><a href="#">Health Monitoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on our latest AI healthcare innovations.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 City Hospital. All Rights Reserved. | "Smart Care, Healthy Future"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple form submission handler
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message. We will get back to you soon!');
+                this.reset();
+            });
+        });
+
+        // CTA button handlers
+        document.querySelectorAll('.cta-button').forEach(button => {
+            if (!button.getAttribute('type') || button.getAttribute('type') !== 'submit') {
+                button.addEventListener('click', function() {
+                    alert('Thank you for your interest! Our team will contact you shortly.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
